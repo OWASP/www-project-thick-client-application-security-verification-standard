@@ -40,4 +40,4 @@ The requirements were developed with the following objectives in mind and are ta
 
 ## License
 
-The entire project content is under the **[Creative Commons Attribution-Share Alike v3.0](https://creativecommons.org/licenses/by-sa/3.0/)** license.
+The entire project content is under the [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
