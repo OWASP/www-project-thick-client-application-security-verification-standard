@@ -24,10 +24,10 @@ jobs:
     - name: Convert Markdown to PDF
       uses: docker://pandoc/latex:2.9
       with:
-        args: --output=output/output.pdf ${{ steps.files_list.outputs.files }}
+        args: --output=output/TASVS-v0.1.pdf /data/*.md
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v3
       with:
         name: output-pdf
-        path: output/output.pdf
+        path: output/TASVS-v0.1.pdf
