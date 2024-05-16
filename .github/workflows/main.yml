@@ -10,8 +10,12 @@ jobs:
 
   convert:
     runs-on: ubuntu-latest
-    
+
     steps:
+    - name: dump workspace location
+      run: |
+        echo '${{ github.workspace }}'
+    
     - name: Checkout code
       uses: actions/checkout@v3
       
@@ -19,7 +23,7 @@ jobs:
       id: files_list
       run: |
         mkdir output
-        echo "files=$(printf '"%s" ' ${{ github.workspace }}/document/0.1/*.md)" > $GITHUB_OUTPUT
+        echo "files=$(printf '"%s" ' ${{ github.workspace }}/../document/0.1/*.md)" > $GITHUB_OUTPUT
 
     - name: Convert Markdown to PDF
       uses: docker://pandoc/latex:2.9
@@ -31,7 +35,3 @@ jobs:
       with:
         name: output-pdf
         path: output/TASVS-v0.1.pdf
-
-    - name: dump
-      run: |
-        echo '${{ github.workspace }}'
