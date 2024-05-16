@@ -4,6 +4,8 @@
 
 Architecture and threat modeling are inextricably linked. Threat modeling informs architectural decisions, while architecture provides the context for identifying and addressing threats systematically. This symbiotic relationship is essential for delivering secure software and systems that meet their intended design goals.
 
+## Testing Checklist
+
 | TASVS-ID       | Description                                                                                                                                 | L1 | L2 | L3 | Status  | Ticket | Owner | Tester Notes |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | -- | -- | -- | ------- | ------ | ----- | ------------ |
 |                |                                                                                                                                             |    |    |    |         |        |       |              |
