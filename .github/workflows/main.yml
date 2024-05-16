@@ -9,7 +9,7 @@ on:
 jobs:
 
   convert:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
@@ -24,10 +24,14 @@ jobs:
     - name: Convert Markdown to PDF
       uses: docker://pandoc/latex:2.9
       with:
-        args: --output=output/TASVS-v0.1.pdf /data/*.md
+        args: --output=output/TASVS-v0.1.pdf ${{ steps.files_list.outputs.files }}
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v3
       with:
         name: output-pdf
         path: output/TASVS-v0.1.pdf
+
+    - name: dump
+      run: |
+        echo '${{ github.workspace }}'
