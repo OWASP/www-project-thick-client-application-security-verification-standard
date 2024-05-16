@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: dump workspace location
+    - name: dump workspace location for debugging
       run: |
         echo '${{ github.workspace }}'
     
@@ -23,7 +23,7 @@ jobs:
       id: files_list
       run: |
         mkdir output
-        echo "files=$(printf '"%s" ' ${{ github.workspace }}/../document/0.1/*.md)" > $GITHUB_OUTPUT
+        echo "files=$(printf '"%s" ' /home/runner/work/www-project-thick-client-application-security-verification-standard/document/0.1/*.md)" > $GITHUB_OUTPUT
 
     - name: Convert Markdown to PDF
       uses: docker://pandoc/latex:2.9
