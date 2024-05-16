@@ -1,4 +1,4 @@
-name: v0.1 pandoc convert markdown to PDF
+name: Convert Markdown to PDF
 
 on:
   push:
@@ -9,18 +9,25 @@ on:
 jobs:
 
   convert:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       
-    - name: Convert Markdown to PDF
+    - name: Create file list
+      id: files_list
       run: |
-        docker run --rm -v "${{ github.workspace }}/document/0.1:/data" pandoc/core:2.9 /data/*.md -o /data/output.pdf
+        mkdir output
+        echo "files=$(printf '"%s" ' ${{ github.workspace }}/document/0.1/*.md)" > $GITHUB_OUTPUT
+
+    - name: Convert Markdown to PDF
+      uses: docker://pandoc/latex:2.9
+      with:
+        args: --output=output/output.pdf ${{ steps.files_list.outputs.files }}
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v3
       with:
         name: output-pdf
-        path: document/0.1/TASVS.pdf
+        path: output/output.pdf
