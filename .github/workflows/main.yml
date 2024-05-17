@@ -1,0 +1,37 @@
+name: Convert Markdown to PDF
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: dump workspace location for debugging
+      run: |
+        echo '${{ github.workspace }}'
+    
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Create file list
+      id: files_list
+      run: |
+        mkdir output
+        echo "files=$(printf '"%s" ' /home/runner/work/www-project-thick-client-application-security-verification-standard/document/0.1/*.md)" > $GITHUB_OUTPUT
+
+    - name: Convert Markdown to PDF
+      uses: docker://pandoc/latex:2.9
+      with:
+        args: --output=output/TASVS-v0.1.pdf ${{ steps.files_list.outputs.files }}
+        
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: output-pdf
+        path: output/TASVS-v0.1.pdf
