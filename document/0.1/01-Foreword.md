@@ -9,3 +9,5 @@ Furthermore, the document emphasizes the importance of maintaining data privacy 
 Regular updates and revisions to this standard will be undertaken to reflect the latest advancements in technology, emerging threats, and evolving regulatory requirements. This approach ensures that the client verification processes remain current, effective, and aligned with industry best practices.
 
 By adopting and adhering to the guidelines set forth in this thick client verification standard documentation, organizations can demonstrate their commitment to maintaining the integrity of their operations, safeguarding client data, and fostering a secure and trustworthy digital environment.
+
+\newpage{}

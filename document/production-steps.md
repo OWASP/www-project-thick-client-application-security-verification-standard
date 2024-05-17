@@ -1,10 +1,21 @@
-# TASVS-ARCH: Architecture & Threat Modelling
+# Manual Steps (TODO: Automate this)
 
-## Control Objective
+These are the steps I used to move from our internal draft excel Excel file to .md files and then eventually to produce the PDF.
 
-Architecture and threat modeling are inextricably linked. Threat modeling informs architectural decisions, while architecture provides the context for identifying and addressing threats systematically. This symbiotic relationship is essential for delivering secure software and systems that meet their intended design goals.
+- Take the Excel file and for each test tab, copy cells B8:F*, where * is the last row for that tab.
+- paste those copied cells into: https://tabletomarkdown.com/convert-spreadsheet-to-markdown/ and click "Submit", then "copy".
+- Paste that data into the "Testing Checklist" section for the relevant markdown file for that set of tests.
+- Remove all of the blank lines between the titles and the first entry, including the seperator.
+- Insert this new seperator, it represents % widths for `pandoc` to understand when we produce the PDF:
+    ```
+    | ---- | ------------- | - | - | - |
+    ```
+- install `pandoc`
+- Now `cd` to the root of the project and run `pandoc document/0.1/*.md -o TASVS-v0.1.pdf -V geometry:margin=2cm`
+    - `0.1` will need updating depending on release version
 
-## Testing Checklist
+
+## Example output of expected table layout
 
 | TASVS-ID       | Description                                                                                                                                 | L1 | L2 | L3 |
 | ---- | ------------- | - | - | - |
@@ -15,5 +26,3 @@ Architecture and threat modeling are inextricably linked. Threat modeling inform
 | TASVS-ARCH-1.4 | Threat modeling process included all phases (system modeling, auto-threat identification, manual threat identification, threat mitigation). |    | X  | X  |
 | TASVS-ARCH-1.5 | Threat model checked-in to source code repository.                                                                                          | X  | X  | X  |
 | TASVS-ARCH-1.6 | Threat model updated regularly as part of a documented process within development team's SSDLC.                                             |    | X  | X  |
-
-\newpage{}
