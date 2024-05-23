@@ -44,7 +44,7 @@ The standard is divided into various groups labelled `TASVS-{word}` that represe
 
 ## Application Security Verification Levels
 
-We folow the same levelling methodology as the [Web Application Security Verification Standard](https://github.com/OWASP/ASVS/tree/master). It defines three security verification levels, with each level increasing in depth.
+We follow the same levelling methodology as the [Web Application Security Verification Standard](https://github.com/OWASP/ASVS/tree/master). It defines three security verification levels, with each level increasing in depth.
 
 - L1 - TASVS Level 1 is for low assurance levels and is completely verifiable through penetration testing.
 - L2 - TASVS Level 2 is for applications that contain sensitive data, which requires protection and is the recommended level for most apps.
