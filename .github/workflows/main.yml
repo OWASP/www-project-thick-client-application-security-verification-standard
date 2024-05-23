@@ -1,4 +1,4 @@
-name: Convert Markdown to PDF
+name: Convert Markdown to PDF and Create Release
 
 on:
   push:
@@ -14,15 +14,53 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Pandoc
-      run: sudo apt-get update && sudo apt-get install -y pandoc texlive
+    - name: Set up Pandoc and jq
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc texlive jq
+
+    - name: Fetch the latest release
+      id: fetch_latest_release
+      run: |
+        LATEST_TAG=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
+        if [ "$LATEST_TAG" == "null" ]; then
+          LATEST_TAG="v0.0.0"
+        fi
+        echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
+
+    - name: Increment version
+      id: increment_version
+      run: |
+        LATEST_TAG=${{ env.LATEST_TAG }}
+        echo "Latest tag: $LATEST_TAG"
+        LATEST_VERSION=${LATEST_TAG#v}
+        IFS='.' read -r major minor patch <<< "$LATEST_VERSION"
+        NEW_VERSION="$major.$((minor + 1)).$patch"
+        NEW_TAG="v$NEW_VERSION"
+        echo "New version: $NEW_TAG"
+        echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
 
     - name: Concatenate and Convert Markdown to PDF
       run: |
-        pandoc document/0.1/*.md -o TASVS-v0.1.pdf -V geometry:margin=2cm
+        pandoc document/0.1/*.md -o TASVS-${{ env.NEW_TAG }}.pdf -V geometry:margin=2cm
 
-    - name: Upload PDF
-      uses: actions/upload-artifact@v2
+    - name: Create GitHub Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: document
-        path: TASVS-v0.1.pdf
+        tag_name: ${{ env.NEW_TAG }}
+        release_name: Release ${{ env.NEW_TAG }}
+        draft: false
+        prerelease: false
+
+    - name: Upload PDF to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./TASVS-${{ env.NEW_TAG }}.pdf
+        asset_name: TASVS-${{ env.NEW_TAG }}.pdf
+        asset_content_type: application/pdf
