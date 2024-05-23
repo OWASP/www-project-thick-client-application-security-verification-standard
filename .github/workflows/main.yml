@@ -25,6 +25,10 @@ jobs:
         mkdir output
         echo "files=$(printf '"%s" ' /home/runner/work/www-project-thick-client-application-security-verification-standard/document/0.1/*.md)" > $GITHUB_OUTPUT
 
+    - name: dump files list for debugging
+      run: |
+        echo '${{ steps.files_list.outputs.files }}'
+
     - name: Convert Markdown to PDF
       uses: docker://pandoc/latex:2.9
       with:
