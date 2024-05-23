@@ -19,8 +19,7 @@ jobs:
 
     - name: Concatenate and Convert Markdown to PDF
       run: |
-        cat *.md > all_files.md
-        pandoc -s -V geometry:margin=2cm -o TASVS-v0.1.pdf all_files.md
+        pandoc document/0.1/*.md -o TASVS-v0.1.pdf -V geometry:margin=2cm
 
     - name: Upload PDF
       uses: actions/upload-artifact@v2
