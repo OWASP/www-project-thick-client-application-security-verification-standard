@@ -27,4 +27,70 @@
 | TASVS-NETWORK-4.3 | Verify that data selection or database queries (e.g. SQL, HQL, ORM, NoSQL) use parameterized queries, ORMs, entity frameworks, or are otherwise protected from SQL injection attacks.                                                                                                  | X  | X  | X  |
 | TASVS-NETWORK-4.4 | Verify that the thick client doesn't expose services on the network like debugging features, even if bound to the local host.                                                                                                                                                          | X  | X  | X  |
 
+
+## Control Group Definitions
+
+### TASVS-NETWORK-1.1
+
+TBC
+
+### TASVS-NETWORK-1.2
+
+TBC
+
+### TASVS-NETWORK-2.1
+
+TBC
+
+### TASVS-NETWORK-2.2
+
+TBC
+
+### TASVS-NETWORK-2.3
+
+TBC
+
+### TASVS-NETWORK-2.4
+
+TBC
+
+### TASVS-NETWORK-2.5
+
+TBC
+
+### TASVS-NETWORK-2.6
+
+TBC
+
+### TASVS-NETWORK-2.7
+
+TBC
+
+### TASVS-NETWORK-3.1
+
+TBC
+
+### TASVS-NETWORK-3.2
+
+TBC
+
+### TASVS-NETWORK-4.1
+
+TBC
+
+### TASVS-NETWORK-4.2
+
+TBC
+
+### TASVS-NETWORK-4.3
+
+TBC
+
+### TASVS-NETWORK-4.4
+
+TBC
+
+
+
+
 \newpage{}

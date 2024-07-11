@@ -18,4 +18,36 @@
 | TASVS-CONF-1.6 | Verify that a Software Bill of Materials (SBOM) is maintained of all third party libraries in use.                                                                                                                                                                                 | X  | X  | X  |
 | TASVS-CONF-1.7 | Ensure that all software components, libraries, frameworks, and runtimes used in the application are up-to-date and not end-of-life or obsolete. Outdated or obsolete components can introduce security vulnerabilities, performance issues, and compatibility problems.           | X  | X  | X  |
 
+
+## Control Group Definitions
+
+### TASVS-CONF-1.1
+
+TBC
+
+### TASVS-CONF-1.2
+
+TBC
+
+### TASVS-CONF-1.3
+
+TBC
+
+### TASVS-CONF-1.4
+
+TBC
+
+### TASVS-CONF-1.5
+
+TBC
+
+### TASVS-CONF-1.6
+
+TBC
+
+### TASVS-CONF-1.7
+
+TBC
+
+
 \newpage{}

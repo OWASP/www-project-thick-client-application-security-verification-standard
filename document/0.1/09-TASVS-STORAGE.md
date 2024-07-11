@@ -19,4 +19,44 @@
 | TASVS-STORAGE-2.1 | DLL Replacement: Swapping a genuine DLL with a malicious one, optionally using DLL Proxying to preserve the original DLL's functionality.                                                                                         | X  | X  | X  |
 | TASVS-STORAGE-2.2 | <br>DLL Search Order Hijacking: Placing the malicious DLL in a search path ahead of the legitimate one, exploiting the application's search pattern.                                                                              | X  | X  | X  |
 
+## Control Group Definitions
+
+### TASVS-STORAGE-1.1
+
+TBC
+
+### TASVS-STORAGE-1.2
+
+TBC
+
+### TASVS-STORAGE-1.3
+
+TBC
+
+### TASVS-STORAGE-1.4
+
+TBC
+
+### TASVS-STORAGE-1.5
+
+TBC
+
+### TASVS-STORAGE-1.6
+
+TBC
+
+### TASVS-STORAGE-1.7
+
+TBC
+
+### TASVS-STORAGE-2.1
+
+TBC
+
+### TASVS-STORAGE-2.2
+
+TBC
+
+
+
 \newpage{}

@@ -19,4 +19,39 @@
 | TASVS-CRYPTO-3.1 | Verify that all cryptographic modules fail securely, and errors are handled in a way that does not enable Padding Oracle attacks.                 | X  | X  | X  |
 | TASVS-CRYPTO-3.2 | Verify that industry proven or government approved cryptographic algorithms, modes, and libraries are used, instead of custom coded cryptography. | X  | X  | X  |
 
+
+## Control Group Definitions
+
+### TASVS-CRYPTO-1.1
+
+TBC
+
+### TASVS-CRYPTO-2.1
+
+TBC
+
+### TASVS-CRYPTO-2.2
+
+TBC
+
+### TASVS-CRYPTO-2.3
+
+TBC
+
+### TASVS-CRYPTO-2.4
+
+TBC
+
+### TASVS-CRYPTO-3.1
+
+TBC
+
+### TASVS-CRYPTO-3.2
+
+TBC
+
+
+
+
+
 \newpage{}
