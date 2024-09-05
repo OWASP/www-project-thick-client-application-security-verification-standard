@@ -23,8 +23,12 @@ jobs:
       id: fetch_latest_release
       run: |
         LATEST_TAG=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
-        if [ "$LATEST_TAG" == "null" ]; then
-          LATEST_TAG="v0.0.0"
+        if [ -z "$LATEST_TAG" ] || [ "$LATEST_TAG" == "null" ]; then
+          LATEST_TAG="v0.5.0"
+        fi
+        # using this to fake/bump versions to v1.0
+        if [ "$LATEST_TAG" == "v0.5.0" ]; then
+          LATEST_TAG="v1.0"
         fi
         echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
 
@@ -34,15 +38,15 @@ jobs:
         LATEST_TAG=${{ env.LATEST_TAG }}
         echo "Latest tag: $LATEST_TAG"
         LATEST_VERSION=${LATEST_TAG#v}
-        IFS='.' read -r major minor patch <<< "$LATEST_VERSION"
-        NEW_VERSION="$major.$((minor + 1)).$patch"
+        IFS='.' read -r major minor <<< "$LATEST_VERSION"
+        NEW_VERSION="$major.$((minor + 1))"
         NEW_TAG="v$NEW_VERSION"
         echo "New version: $NEW_TAG"
         echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
 
     - name: Concatenate and Convert Markdown to PDF
       run: |
-        pandoc document/0.1/*.md -o TASVS-${{ env.NEW_TAG }}.pdf -V geometry:margin=2cm
+        pandoc document/1.0/*.md -o TASVS-${{ env.NEW_TAG }}.pdf -V geometry:margin=2cm
 
     - name: Create GitHub Release
       id: create_release
