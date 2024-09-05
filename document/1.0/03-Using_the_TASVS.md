@@ -29,8 +29,9 @@ The standard is divided into various groups labelled `TASVS-{word}` that represe
 - TASVS-CODE-4 - Client Side - Validation, Sanitization and Encoding
 - TASVS-CODE-5 - Client Side - Business Logic
 - TASVS-CODE-6 - Client Side - Fuzzing
-- TASVS-CODE-7 - Client Side - Privilege and Rule of two
+- TASVS-CODE-7 - Client Side - Secure Coding Practices
 - TASVS-CONF-1 - General Configuration Checks
+- TASVS-CONF-2 - Privileges and Permissions
 - TASVS-CRYPTO-1 - Communication
 - TASVS-CRYPTO-2 - Storage
 - TASVS-CRYPTO-3 - General
