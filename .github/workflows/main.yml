@@ -24,10 +24,10 @@ jobs:
       run: |
         LATEST_TAG=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
         if [ -z "$LATEST_TAG" ] || [ "$LATEST_TAG" == "null" ]; then
-          LATEST_TAG="v0.5.0"
+          LATEST_TAG="v0.4.0"
         fi
         # using this to fake/bump versions to v1.0
-        if [ "$LATEST_TAG" == "v0.5.0" ]; then
+        if [ "$LATEST_TAG" == "v0.4.0" ]; then
           LATEST_TAG="v1.0"
         fi
         echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
