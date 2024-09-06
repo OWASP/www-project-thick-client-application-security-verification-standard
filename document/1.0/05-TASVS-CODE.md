@@ -42,10 +42,10 @@ To ensure that the application's source code is developed and maintained in a ma
 | TASVS-CODE-5.2  | Check for design practices that trick or manipulate users into making choices they would not otherwise have made and that may cause harm. AKA "deceptive patterns". See https://www.deceptive.design/types for examples.                                                                       | X  | X  | X  |
 | TASVS-CODE-5.3  | Is the thick client only using workflows that do not violate common security advice?                                                                                                                                                                                                           | X  | X  | X  |
 | TASVS-CODE-5.4  | Verify that the attack surface is reduced by sandboxing or encapsulating third party libraries to expose only the required behaviour into the application.                                                                                                                                     | X  | X  | X  |
-| TASVS-CODE-5.5  | Check that import files cannot be abused.                                                                                                                                                                                                                                                    | X  | X  | X  |
+| TASVS-CODE-5.5  | Check that any imported files cannot be utilized to attack the thick client.                                                                                                                                                                                                                                                    | X  | X  | X  |
 | TASVS-CODE-5.6  | If the thick client registers a URL handler / protocol handler, verify that it can't trigger dangerous action or introduces common vulnerabilities (memory corruption, command and argument injection, etc.).                                                                                   | X  | X  | X  |
 | TASVS-CODE-6    | Client Side - Fuzzing.                                                                                                                                                                                                                                                                          |    |    |    |
-| TASVS-CODE-6.1  | Perform "dumb fuzzing" of the application with randomised input to try to cause a crash.                                                                                                                                                                                                       | X  | X  | X  |
+| TASVS-CODE-6.1  | Perform "dumb fuzzing" of the application with randomised input to try to cause a crash.                                                                                                                                                                                                       |    | X  | X  |
 | TASVS-CODE-6.2  | Perform "smart fuzzing". Intelligently generate test cases that maximize code coverage and explore complex program states to increasing the likelihood of finding vulnerabilities over "dumb fuzzing".                                                                                         |    |    | X  |
 | TASVS-CODE-7    | Client Side - Secure Coding
 Practices.                                                                                                                                                                                                                                                             |    |    |    |
@@ -93,7 +93,7 @@ Exceptions that are thrown and not properly handled can lead to security vulnera
 
 ### TASVS-CODE-3.3 - Perform binary static analysis. (verify that the binaries are compiled with the latest compiler, examine compilation settings and validates binary signing).
 
-#### what is binary static analysis?
+#### What is binary static analysis?
 
 Binary static analysis is used to verify that the thick client binaries are compiled with the latest compiler and that the compilation settings are appropriate for security. This can help to identify security vulnerabilities in the thick client that may be introduced during the compilation process.
 
@@ -549,9 +549,9 @@ public class Program
 In this example, the `Sandbox` class is used to encapsulate the `ThirdPartyLibrary` and prevent it from accessing code outside of the sandbox.
 
 
-### TASVS-CODE-5.5 - Check that import files cannot be abused.
+### TASVS-CODE-5.5 - Check that any imported files cannot be utilized to attack the thick client.
 
-To prevent attackers from exploiting vulnerabilities in import files to compromise the thick client, it is important to ensure that import files cannot be abused. This can be done by validating and sanitizing import files before using them. For example, if the thick client imports data from a CSV file, the file should be validated and sanitized.
+To prevent attackers from exploiting vulnerabilities in imported files to compromise the thick client, validation and sanitizing of any files should occur before using them. For example, if the thick client imports data from a CSV file, the file should be validated and sanitized.
 
 ### TASVS-CODE-5.6 - If the thick client registers a URL handler / protocol handler, verify that it can't trigger dangerous action or introduces common vulnerabilities (memory corruption, command and argument injection, etc.).
 
