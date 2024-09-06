@@ -47,9 +47,9 @@ To ensure that the application's source code is developed and maintained in a ma
 | TASVS-CODE-6    | Client Side - Fuzzing.                                                                                                                                                                                                                                                                          |    |    |    |
 | TASVS-CODE-6.1  | Perform "dumb fuzzing" of the application with randomised input to try to cause a crash.                                                                                                                                                                                                       | X  | X  | X  |
 | TASVS-CODE-6.2  | Perform "smart fuzzing". Intelligently generate test cases that maximize code coverage and explore complex program states to increasing the likelihood of finding vulnerabilities over "dumb fuzzing".                                                                                         |    |    | X  |
-| TASVS-CODE-7    | Client Side - Privilege and Rule of two.                                                                                                                                                                                                                                                        |    |    |    |
-| TASVS-CODE-7.1  | Ensure that the software follows the principle of least privileges and runs with the lowest level of privileges for it to work as expected. If several levels of privileges are required, their IPC interfaces are well-defined and do not expose more features than required.                 | X  | X  | X  |
-| TASVS-CODE-7.2  | The thick client follows the "Rule of 2", where it cannot have more than 2 of: works with untrustworthy inputs, is written in memory unsafe language, runs with high privileges / without a sandbox.                                                                                           | X  | X  | X  |
+| TASVS-CODE-7    | Client Side - Secure Coding
+Practices.                                                                                                                                                                                                                                                             |    |    |    |
+| TASVS-CODE-7.1  | Ensure that fully qualified paths are specified when calling/loading executables or DLL files to prevent the OS from searching in other directories that could contain malicious files or for files in the wrong location and help prevents Dynamic Link Libraries (DLL) and EXE Hijacking attacks.                                                                         | X  | X  | X  |
 
 ## Control Group Definitions
 
@@ -571,23 +571,24 @@ Performing "smart fuzzing" of the thick client can help to identify security vul
 
 One way to do this is to use a fuzzer like [AFL]() or [libFuzzer]() with custom test case generation strategies, such as harnesses or mutators. These tools can automatically generate test cases and run them against the thick client to identify security vulnerabilities.
 
-### *TASVS-CODE-7 - Client Side - Privilege and Rule of two*
 
-### TASVS-CODE-7.1 - Ensure that the software follows the principle of least privileges and runs with the lowest level of privileges for it to work as expected. If several levels of privileges are required, their IPC interfaces are well-defined and do not expose more features than required.
+### *TASVS-CODE-7 - Client Side - Secure Coding Practices*
 
-The thick client should follow the principle of least privileges and run with the lowest level of privileges required for it to work as expected. If several levels of privileges are required, their IPC interfaces should be well-defined and not expose more features than required. This can help to prevent attackers from exploiting privilege escalation vulnerabilities to compromise the thick client.
+### TASVS-CODE-7.1 - Ensure that fully qualified paths are specified when calling/loading executables or DLL files to prevent the OS from searching in other directories that could contain malicious files or for files in the wrong location and help prevents Dynamic Link Libraries (DLL) and EXE Hijacking attacks.
 
-For example, if the thick client runs with elevated privileges, an attacker could exploit a vulnerability in the thick client to gain access to sensitive information or execute arbitrary code. By running the thick client with the lowest level of privileges required for it to work as expected, the attack surface is reduced and the risk of privilege escalation vulnerabilities is minimized.
+DLL Hijacking is an attack technique that consists of tricking an application into loading an altered DLL file. Under normal operation, when an application depends on a DLL file, it loads it into memory. However, a malicious actor can take advantage of this process by injecting malicious code into the DLL file. As a result, the application unknowingly executes the malicious code, altering its behavior. EXE Hijacking is the same idea, but for EXEs calls on runtime.
+
+For example, if the program is running with elevated privileges, DLL Hijacking may lead to privilege escalation. DLL hijacking can also be used to evade anti-malware detection, by leveraging a legitimate, whitelisted application to load a malicious DLL. Furthermore, since many applications load DLL files during startup, the attacker can gain access each time the system boots. Therefore, ensuring persistence.
+
+Example:
+```c
+LoadLibrary("example.dll"); // Unsafe, instead use:
+LoadLibrary("C:\\Program Files\\MyApp\\example.dll"); // Safer
+```
 
 
-### TASVS-CODE-7.2 - The thick client follows the "Rule of 2", where it cannot have more than 2 of: works with untrustworthy inputs, is written in memory unsafe language, runs with high privileges / without a sandbox.
+### TASVS-CODE-7.2 - Ensure that safe file operations, such as when creating or opening files, are used to prevent Symlinks attacks.
 
-The thick client should follow the "Rule of 2", where it cannot have more than 2 of the following characteristics:
 
-- Works with untrustworthy inputs
-- Is written in a memory-unsafe language
-- Runs with high privileges or without a sandbox
-
-This can help to prevent attackers from exploiting security vulnerabilities in the thick client. For example, if the thick client works with untrustworthy inputs and is written in a memory-unsafe language, an attacker could exploit memory vulnerabilities to execute arbitrary code. By following the "Rule of 2", the thick client can reduce the risk of security vulnerabilities and protect sensitive information from unauthorized access.
 
 \newpage{}
