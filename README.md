@@ -8,7 +8,7 @@
 
  
 ## Introduction
-The OWASP Thick Client Application Security Verification Standard (TASVS) Project aims to establish an open standard for securing thick client applications. This project provides a comprehensive framework for designing, building, and testing technical application security controls, addressing architectural concerns, secure development lifecycle, threat modeling, agile security practices, continuous integration/deployment, serverless environments, and configuration management.
+The OWASP Thick Client Application Security Verification Standard (TASVS) Project aims to establish an open standard for securing thick client applications. This project provides a comprehensive framework for designing, building, and testing technical application security controls.
 
 The TASVS Project fills the gap between the [OWASP Application Security Verification Standard (ASVS)](https://github.com/OWASP/ASVS) for web applications and the [Mobile Application Security Verification Standard (MASVS)](https://github.com/OWASP/owasp-masvs). While the MASVS can be applied to thick client testing, it is not an ideal fit. The TASVS Project seeks to create a more suitable standard for these scenarios.
 
@@ -43,13 +43,9 @@ The project is looking for contributors to help with the following tasks:
 
 The requirements were developed with the following objectives in mind and are taken from the web ASVS project: https://github.com/OWASP/ASVS/blob/master/README.md#standard-objectives
 
-* Help organizations adopt or adapt a high quality secure coding standard
-* Help architects and developers build secure software by designing and building security in, and verifying that they are in place and effective by the use of unit and integration tests that implement ASVS tests
-* Help deploy secure software via the use of repeatable, secured builds
+* Help organizations adopt or adapt a high quality secure coding standard.
+* Help architects and developers build secure software by designing and building security in, and verifying that they are in place and effective by the use of unit and integration tests that implement tests.
 * Help security reviewers use a comprehensive, consistent, high quality standard for hybrid code reviews, secure code reviews, peer code reviews, retrospectives, and work with developers to build security unit and integration tests. It is even possible to use this standard for penetration testing at Level 1
-* Assist tool vendors by ensuring there is an easily generatable machine readable version, with CWE mappings
-* Assist organizations to benchmark application security tools by the percentage of coverage of the ASVS for dynamic, interactive, and static analysis tools
-* Minimize overlapping and competing requirements from other standards, by either aligning strongly with them (NIST 800-63), or being strict supersets (OWASP Top 10 2017, PCI DSS 3.2.1), which will help reduce compliance costs, effort, and time wasted in accepting unnecessary differences as risks.
 
 ## Special thanks to our contributers
 
