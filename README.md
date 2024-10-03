@@ -1,30 +1,43 @@
- # OWASP Thick Client Application Security Verification Standard
-[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+ # OWASP Thick Client Application Security Verification Standard (TASVS)
+[![Downloads](https://img.shields.io/github/downloads/owasp/www-project-thick-client-application-security-verification-standard/total?logo=github&logoColor=white&style=flat-square)](https://github.com/owasp/www-project-thick-client-application-security-verification-standard/releases)
+[![GitHub contributors](https://img.shields.io/github/contributors/owasp/www-project-thick-client-application-security-verification-standard)](https://github.com/owasp/www-project-thick-client-application-security-verification-standard/graphs/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/owasp/www-project-thick-client-application-security-verification-standard)](https://github.com/owasp/www-project-thick-client-application-security-verification-standard/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/owasp/www-project-thick-client-application-security-verification-standard)](https://github.com/owasp/www-project-thick-client-application-security-verification-standard/pulls)
+[![GitHub license](https://img.shields.io/github/license/owasp/www-project-thick-client-application-security-verification-standard)](https://github.com/owasp/www-project-thick-client-application-security-verification-standard/blob/main/LICENSE)
 
-This work is licensed under a
-[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
 
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
-
-[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
-[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
-[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-blue.svg
  
 ## Introduction
+The OWASP Thick Client Application Security Verification Standard (TASVS) Project aims to establish an open standard for securing thick client applications. This project provides a comprehensive framework for designing, building, and testing technical application security controls, addressing architectural concerns, secure development lifecycle, threat modeling, agile security practices, continuous integration/deployment, serverless environments, and configuration management.
 
-The primary aim of the OWASP Application Security Verification Standard (ASVS) Project is to provide an open application security standard for web apps and web services of all types.
+The TASVS Project fills the gap between the [OWASP Application Security Verification Standard (ASVS)](https://github.com/OWASP/ASVS) for web applications and the [Mobile Application Security Verification Standard (MASVS)](https://github.com/OWASP/owasp-masvs). While the MASVS can be applied to thick client testing, it is not an ideal fit. The TASVS Project seeks to create a more suitable standard for these scenarios.
 
-The standard provides a basis for designing, building, and testing technical application security controls, including architectural concerns, secure development lifecycle, threat modelling, agile security including continuous integration / deployment, serverless, and configuration concerns.
+## Project Leaders and Working Group
 
-This project aims to fill the gap between the web ASVS and the mobile ASVS (MASVS), whilst the MASVS can be used for thick client testing it's not a perfect fit and so we hope to produce something more appropriate.
+The project is mainly maintained by a single project leader [Dave Hanson](https://github.com/JeffreyShran). However he is heavily supported by his active AppSec team at Bentley Systems who include [Samuel Aubert](https://github.com/matreurai), [Einaras Bartkus](https://github.com/eb-bsi), [Thomas Chauchefoin](https://www.linkedin.com/in/thomaschauchefoin), and [John Cotter](https://www.linkedin.com/in/john-cotter-40338612/).
+
+The project is also supported by the OWASP community and the OWASP Foundation. Special, thanks to [Starr Brown](https://github.com/mamicidal) for her support in her capacity as Director of Projects.
+
+## Roadmap
+
+The first public version that was suitable for use was released in September 2024. The project is in the process of refining the standard and adding more content.
+
+As we mature, we will be looking to create a more structured approach to the roadmap. As with most activities we will allow ourselves to be steered by the work completed by the [ASVS project](https://github.com/OWASP/ASVS/wiki/Roadmap-to-version-5.0) to find that strucutre.
 
 
-## Roadmap to TASVS 1.0
 
-The general idea would be to take the best and most applicable bits of the existing standards and then enhance it with specific items related to thick testing. I would call this our version 0.1 and produce it in spreadsheet form initially as (to my mind anyway) it's easier to relate the checklist approach to practical testing. My team would use it to review our existing products in our company (we have plenty to go at) in real AppSec engagements and refine it over time with the aim of producing version 1.0. At this point a formal PDF document would be produced and hopefully a new standard created.
+## Contributing
 
-Timelines would probably be in the 6-12 month range (end of 2024) for the v0.1 and timescales for refinement over time for the v1.0 production might be in the 6-24 months range (end of 2025) depending on how well the v0.1 is done initially. 
+The project is looking for contributors to help with the following tasks:
 
+- Getting the word out about the project. If you do ntohing else, please share this project with your network.
+- Review and provide feedback on the current standard.
+- Create new control objectives.
+- Update existing control group definitions, particularly those ones that:
+  - might benefit from code examples and 
+  - those that could be elaborated on further in simpler terms to make it more accessible to juniors in our field and developers with less security experience.
+
+> If you are interested in contributing, please review the [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) documents.
 
 ## Standard Objectives
 
@@ -38,7 +51,40 @@ The requirements were developed with the following objectives in mind and are ta
 * Assist organizations to benchmark application security tools by the percentage of coverage of the ASVS for dynamic, interactive, and static analysis tools
 * Minimize overlapping and competing requirements from other standards, by either aligning strongly with them (NIST 800-63), or being strict supersets (OWASP Top 10 2017, PCI DSS 3.2.1), which will help reduce compliance costs, effort, and time wasted in accepting unnecessary differences as risks.
 
+## Special thanks to our contributers
+
+The OWASP Thick Client Application Security Verification Standard (TASVS) Project would like to thank the following contributors for their support and dedication to the project:
+
+<a href="https://github.com/OWASP/www-project-thick-client-application-security-verification-standard/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=OWASP/www-project-thick-client-application-security-verification-standard" />
+</a>
+
+## Sponsors
+
+<a href="https://www.bentley.com/company/about-us/">
+  <div>
+    <img src="assets\images\BentleyLOGO_BLK_type.jpg" width="230" alt="Bentley Systems" />
+  </div>
+  <b>
+    Bentley is the leading provider of infrastructure engineering software, advancing infrastructure for better quality of life and sustainability.
+  </b>
+  <div>
+    <sup>Visit <u>bentley.com</u> to learn more.</sup>
+  </div>
+</a>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=OWASP/www-project-thick-client-application-security-verification-standard&type=Date)](https://star-history.com/#OWASP/www-project-thick-client-application-security-verification-standard&Date)
 
 ## License
 
 The entire project content is under the [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+
+## Related
+
+Here are some related projects:
+> please open an issue if you would like to have your project listed here.
+
+- [OWASP Application Security Verification Standard (ASVS)](https://github.com/OWASP/ASVS)
+- [OWASP Mobile Application Security Verification Standard (MASVS)](https://github.com/OWASP/owasp-masvs)
