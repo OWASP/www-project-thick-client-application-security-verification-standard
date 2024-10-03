@@ -24,7 +24,7 @@ The first public version that was suitable for use was released in September 202
 
 As we mature, we will be looking to create a more structured approach to the roadmap. As with most activities we will allow ourselves to be steered by the work completed by the [ASVS project](https://github.com/OWASP/ASVS/wiki/Roadmap-to-version-5.0) to find that strucutre.
 
-
+In the `utils\Convert-TASVS-Excel` directory, there is a script that can be used to populate an Excel template with the TASVS checklist. This is a useful tool for applying the standard in a practical way. It is not fully release ready yet, but can be used in a pinch. I will endevour to update it over time, for now grab the Excel file that will be named something like `TASVS_v1.6.xlsx`.
 
 ## Contributing
 
