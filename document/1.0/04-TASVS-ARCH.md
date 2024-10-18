@@ -11,7 +11,7 @@ Architecture and threat modeling are inextricably linked. Threat modeling inform
 | ---- | ------------- | - | - | - |
 | TASVS-ARCH-1   | Threat Modeling                                                                                                                             |    |    |    |
 | TASVS-ARCH-1.1 | Completed a low fidelity threat model for thick client.                                                                                     | X  | X  | X  |
-| TASVS-ARCH-1.2 | Completed a high fidelity threat model for thick client which is in currently in production.                                                |    | X  | X  |
+| TASVS-ARCH-1.2 | Completed a high fidelity threat model for thick client which is currently in production.                                                   |    | X  | X  |
 | TASVS-ARCH-1.3 | Threat model includes server-side components and dependencies (cloud APIs, OIDC provider, file storage, etc.).                              |    | X  | X  |
 | TASVS-ARCH-1.4 | Threat modeling process included all phases (system modeling, auto-threat identification, manual threat identification, threat mitigation). |    | X  | X  |
 | TASVS-ARCH-1.5 | Threat model checked-in to source code repository.                                                                                          | X  | X  | X  |
@@ -35,13 +35,13 @@ Recommended "Low Fidelity" baseline:
 
 That's it! Later, continue to elaborate the model and raise fidelity score. Remember the system model is a means to an end - identifying threats.
 
-### TASVS-ARCH-1.2 - Completed a high fidelity threat model for thick client which is in currently in production.
+### TASVS-ARCH-1.2 - Completed a high fidelity threat model for thick client which is currently in production.
 
-"high fidelity" threat modeling is a more detailed and comprehensive approach to threat modeling. It includes all the elements of a low-fidelity model but adds more detail and context to the model. This includes:
+"High fidelity" threat modeling is a more detailed and comprehensive approach to threat modeling which maximizes threat identification. High fidelity is appropriate for a production product where all aspects of the system are well-understood. It includes all the elements of a low fidelity model but adds additional detail and context to the model. This includes:
 
-- Detailed data flow diagrams
-- Detailed trust boundaries
-- Detailed threat identification
+- Define data assets processed and stored on technical assets
+- Define data assets flowing on communication links
+- Optional attributes defined on data assets and technical assets
 
 ### TASVS-ARCH-1.3 - Threat model includes server-side components and dependencies (cloud APIs, OIDC provider, file storage, etc.).
 
@@ -58,7 +58,7 @@ The threat model should be checked into the source code repository to ensure tha
 
 ### TASVS-ARCH-1.6 - Threat model updated regularly as part of a documented process within development team's SSDLC.
 
-The threat model should be updated regularly as part of a documented process within the development team's SSDLC. This ensures that the threat model remains current and relevant as the thick client evolves and new threats emerge. Regular updates to the threat model help to ensure that the thick client remains secure and resilient to potential threats.
+The threat model should be updated regularly as part of a documented process within the development team's secure software development lifecycle (SSDLC). This ensures that the threat model remains current and relevant as the thick client evolves and new threats emerge. Regular updates to the threat model help to ensure that the thick client design remains secure and resilient to potential threats.
 
 
 \newpage{}
