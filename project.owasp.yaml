@@ -1,0 +1,21 @@
+audience:
+  - builder
+leaders:
+  - name: Dave Hanson
+    email: Dave.hanson@owasp.org
+level: 2
+license:
+  - CC-BY-SA-4.0
+name: OWASP Thick Client Application Security Verification Standard
+pitch: This project aims to fill the gap between the web ASVS and the mobile ASVS (MASVS), whilst the MASVS can be used for thick client testing it's not
+  a perfect fit and so we hope to produce something more appropriate.
+repositories:
+  - name: www-project-thick-client-application-security-verification-standard
+    url: https://github.com/OWASP/www-project-thick-client-application-security-verification-standard
+    description: OWASP Thick Client Application Security Verification Standard
+tags:
+  - example-tag
+  - custom-tag-1
+  - custom-tag-2
+type: documentation
+website: https://owasp.org/www-project-thick-client-application-security-verification-standard
