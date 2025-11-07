@@ -20,6 +20,7 @@ John is a distinguished security architect at Bentley Systems with many years of
 - Einaras Bartkus
 - Thomas Chauchefoin
 - Samuel Aubert
+- Vishant Gawali
 
 
 ## Special Thanks
