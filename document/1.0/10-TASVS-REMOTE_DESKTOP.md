@@ -4,6 +4,7 @@
 
 Ensure that remote desktop protocols, virtual desktop infrastructure, and kiosk mode implementations are configured and deployed securely to protect against unauthorized access, session hijacking, breakout attacks, and data leakage. This includes proper authentication mechanisms, network isolation, hardening configurations, and monitoring capabilities.
 
+
 ## Testing Checklist
 
 | TASVS-ID         | Description                                                                                                                                                                  | L1 | L2 | L3 |
@@ -50,7 +51,62 @@ Ensure that remote desktop protocols, virtual desktop infrastructure, and kiosk 
 
 ### *TASVS-REMOTE-1 - Remote Desktop (RDP) Security*
 
-Remote Desktop Protocol (RDP) is a proprietary protocol developed by Microsoft that allows users to connect to and control another computer remotely over a network connection. RDP operates on TCP port 3389 by default and provides full graphical access to the remote system. While RDP is a powerful tool for remote administration and support, it presents significant security risks if not properly configured and protected.
+Remote Desktop Protocol (RDP) is a proprietary protocol developed by Microsoft that allows users to connect to and control another computer remotely over a network connection. It is a system made by Microsoft that allows users to access and control another computer from far away, as if sitting in front of it. You see its screen on your computer, and you can use its mouse, keyboard, files, apps, etc. RDP operates on TCP port 3389 by default.
+
+#### How RDP Works
+
+RDP (Remote Desktop Protocol) allows you to control another computer over a network:
+
+Step 1 - You open Remote Desktop Connection (mstsc.exe) on your computer.
+Step 2 - You enter the IP address or hostname of the target computer.
+Step 3 - Your device sends a connection request to port 3389 (default).
+Step 4 - You login with a username and password (or domain credentials).
+Step 5 - After authentication you see the remote computer's screen.
+Step 6 - Everything you type or click is transferred to that remote machine.
+
+#### RDP Security Risks
+
+The following table outlines the primary security risks associated with RDP:
+
+| No. | Risk                                   | Explanation                                                                    |
+|-----|----------------------------------------|--------------------------------------------------------------------------------|
+| 1   | Weak or Default Passwords              | Attackers can guess or brute-force easy passwords.                             |
+| 2   | RDP Port 3389 Exposed to Internet      | Publicly reachable RDP is scanned and attacked by bots and hackers.            |
+| 3   | No Multi-Factor Authentication (MFA)   | If password is leaked, attacker gets full access without needing OTP or 2FA.   |
+| 4   | Brute-Force Attacks                    | Tools like Hydra or NLBrute try thousands of login attempts automatically.     |
+| 5   | Credential Stuffing                    | Attackers use leaked username-password combos from data breaches.              |
+| 6   | Unpatched RDP Vulnerabilities          | Exploits like BlueKeep (CVE-2019-0708) allow remote takeover if unpatched.     |
+| 7   | Session Hijacking / MITM               | If traffic is not encrypted, attackers can intercept sessions or credentials.  |
+| 8   | No Network Isolation                   | Once logged in via RDP, attacker can move to other internal systems.           |
+| 9   | Clipboard & Drive Redirection Misuse   | Malware or sensitive files can be transferred through drive sharing.           |
+| 10  | RDP Session Breakout                   | User may break out of remote session and access full host system.              |
+| 11  | No Account Lockout Policy              | Unlimited wrong login attempts allow brute-force attacks easily.               |
+| 12  | Stolen NTLM Hashes / Pass-the-Hash     | Tools like Mimikatz can steal password hashes and reuse them to login.         |
+| 13  | Insider Misuse                         | Authorized employees can copy data or perform malicious actions.               |
+| 14  | Lack of Logging or Monitoring          | No alerting means malicious logins or failures go unnoticed.                   |
+| 15  | Unrestricted PowerShell or CMD         | Attackers can run scripts, malware, or commands freely once logged in.         |
+
+#### RDP Security Controls
+
+The following table outlines the security controls to mitigate RDP risks:
+
+| No. | Control                                  | Explanation                                                                   |
+|-----|------------------------------------------|-------------------------------------------------------------------------------|
+| 1   | Use VPN or Bastion Host                  | Do not expose RDP to the Internet. Use VPN or jump server.                    |
+| 2   | Enable Network Level Authentication (NLA)| Authenticates users before the remote session is created.                     |
+| 3   | Strong Passwords + MFA/2FA               | Prevents brute-force, credential reuse and password attacks.                  |
+| 4   | Account Lockout Policy                   | Locks account after 3-5 failed logins to stop brute-force.                    |
+| 5   | Restrict RDP Users (Least Privilege)     | Only allow specific users/groups. Remove 'Everyone/Users'.                    |
+| 6   | Firewall Whitelisting                    | Only allow RDP from trusted IPs (VPN, office network etc.).                   |
+| 7   | Change Default Port (3389) [Optional]    | Not strong security, but reduces automated Internet scans.                    |
+| 8   | Disable Clipboard & Drive Redirection    | Stops file copy/paste and drive sharing over RDP sessions.                    |
+| 9   | Disable Printer / USB Redirection        | Prevents data theft or malware via redirected devices.                        |
+| 10  | Enable RDP TLS Encryption                | Secure RDP traffic using SSL/TLS certificates.                                |
+| 11  | PowerShell Constrained Language Mode     | Limits PowerShell misuse by restricting dangerous commands.                   |
+| 12  | Enable Logging & Monitoring              | Log events 4624, 4625, 4778, 4779 and review regularly.                       |
+| 13  | Patch Windows & RDP Regularly            | Updates fix critical exploits such as BlueKeep.                               |
+| 14  | Use RDP Gateway / RD Gateway             | Centralized secure access; enforces MFA and audit logs.                       |
+| 15  | Disable RDP When Not Required            | Turn off or uninstall RDP if it's not being used.                             |
 
 ### TASVS-REMOTE-1.1 - Verify that RDP services are not exposed directly to the internet without VPN or gateway protection.
 
@@ -110,7 +166,48 @@ If RDP is not needed on a system, it should be completely disabled or the Remote
 
 ### *TASVS-REMOTE-2 - Virtual Desktop Infrastructure (VDI)*
 
-Virtual Desktop Infrastructure (VDI) is a technology that hosts desktop operating systems within virtual machines running on centralized servers in a data center or cloud environment. Users connect to these virtual desktops remotely using thin clients or endpoint devices through protocols such as RDP, Citrix HDX, VMware Blast, or Teradici PCoIP. VDI solutions include platforms like VMware Horizon, Citrix Virtual Apps and Desktops, and Microsoft Azure Virtual Desktop.
+Virtual Desktop Infrastructure (VDI) is a technology where desktop operating systems (like Windows or Linux) run inside virtual machines hosted in a data center or cloud. Users connect to these desktops remotely using clients such as VMware Horizon, Citrix Workspace, Microsoft AVD, etc.
+
+#### How VDI Works (Basic Flow)
+
+The following describes the basic VDI workflow:
+
+Step 1 - User Device connects to the VDI environment.
+Step 2 - Login to VDI Client / Portal (VMware / Citrix / AVD).
+Step 3 - Gateway / Connection Broker Authenticates User.
+Step 4 - Virtual Desktop (VM) is Assigned from Pool or Created.
+Step 5 - Secure Protocol Established (RDP / HDX / PCoIP / Blast Protocol).
+Step 6 - User Works on Remote Desktop (Data stays in Data Center/Cloud Server).
+
+#### VDI Top Security Risks
+
+The following table outlines the primary security risks associated with VDI:
+
+| No. | Risk                                      | Explanation                                        |
+|-----|-------------------------------------------|----------------------------------------------------|
+| 1   | Weak Login / No MFA                       | Stolen passwords = easy access.                    |
+| 2   | VDI Gateway Exposed to Internet           | Hackers scan & attack login ports.                 |
+| 3   | Hypervisor / Server Compromise            | If host is hacked, all VMs at risk.                |
+| 4   | Infected Base Image (Golden Image)        | Malware spreads to all VDI desktops.               |
+| 5   | No Network Segmentation                   | Attackers move inside internal net.                |
+| 6   | USB / Clipboard / Drive Redirection Misuse| Data theft or malware injection.                   |
+| 7   | No Logging or Monitoring                  | Silent attacks go unnoticed.                       |
+| 8   | Unpatched VDI Software                    | Old Citrix/VMware/AVD = vulnerable.                |
+
+#### VDI Security Controls
+
+The following table outlines the security controls to mitigate VDI risks:
+
+| No. | Security Control                          | Explanation                                      |
+|-----|-------------------------------------------|--------------------------------------------------|
+| 1   | Enforce MFA for Login                     | Stops password-only attacks.                     |
+| 2   | Use VPN / Secure Gateway                  | Do not expose VDI/RDP to internet.               |
+| 3   | Patch VDI Servers & Hypervisors           | Fixes Citrix/VMware exploits.                    |
+| 4   | Harden & Scan Golden Images               | Clean, malware-free VM templates.                |
+| 5   | Network Segmentation (Zero Trust)         | VDI desktops cannot reach everything.            |
+| 6   | Disable USB / Clipboard / Drive Sharing   | Prevents malware/data leakage.                   |
+| 7   | Enable Logging + Send to SIEM             | Track logins, failures, sessions.                |
+| 8   | Use EDR/Antivirus in Virtual Desktops     | Detect malware or suspicious behavior.           |
 
 ### TASVS-REMOTE-2.1 - Verify that VDI gateway services are not exposed directly to the internet without proper authentication and access controls.
 
@@ -154,7 +251,58 @@ Idle session policies help prevent unauthorized access to unattended virtual des
 
 ### *TASVS-REMOTE-3 - Kiosk Mode Security*
 
-Kiosk mode is a locked-down computing environment where a device is restricted to run only specific applications or provide limited functionality. Common examples include ATMs, airport check-in terminals, point-of-sale systems, public information displays, examination systems, and self-service stations. Kiosk mode prevents users from accessing the underlying operating system, file system, or unauthorized applications.
+Kiosk Mode is a restricted environment where a computer or device is locked to run only one application or a limited set of functions. Users cannot access the desktop, other apps, settings, file explorer, task manager, or system functions.
+
+Common examples include:
+1. ATMs
+2. Airport check-in systems
+3. School exam systems
+4. Self-service ticket machines
+5. Study-only laptops
+6. POS (Point of Sale) billing computers
+7. Digital signboards / menu screens
+
+#### How Kiosk Mode Works
+
+The following describes how kiosk mode is typically implemented:
+
+Step 1 - Install Windows / Linux / ChromeOS normally.
+Step 2 - Admin enables Kiosk Mode / Assigned Access.
+Step 3 - Admin selects one allowed app (Browser / POS / Learning App).
+Step 4 - System hides desktop, taskbar, start menu, settings, and file explorer.
+Step 5 - User can only access that single application, nothing else.
+Step 6 - Keyboard shortcuts (Alt+Tab, Ctrl+Esc, Win+R, Ctrl+Alt+Del) are blocked.
+Step 7 - After logout or restart, session resets automatically.
+
+#### Kiosk Security Risks
+
+The following table outlines the primary security risks associated with Kiosk Mode:
+
+| No. | Risk                                | Explanation                                                     |
+|-----|-------------------------------------|-----------------------------------------------------------------|
+| 1   | Kiosk Breakout / Escape             | User escapes kiosk app to desktop/OS.                           |
+| 2   | Keyboard Shortcut Abuse             | Ctrl+Alt+Del, Alt+Tab, etc. give access to system functions.    |
+| 3   | USB / External Device Attack        | Malware or data theft via USB or phone connections.             |
+| 4   | Browser or DevTools Exploit         | Use of Inspect Element, downloads, or file upload to bypass restrictions. |
+| 5   | No Network Isolation                | Kiosk can connect to internal sensitive servers or networks.    |
+| 6   | Weak or Default Admin Passwords     | Users can exit kiosk or change system settings.                 |
+| 7   | Unpatched OS / App Vulnerabilities  | Allows privilege escalation or remote attack.                   |
+| 8   | No Session Reset / Data Leakage     | Previous user's history or data remains available.              |
+
+#### Kiosk Security Controls
+
+The following table outlines the security controls to mitigate Kiosk Mode risks:
+
+| No. | Control                              | Explanation                                                     |
+|-----|--------------------------------------|-----------------------------------------------------------------|
+| 1   | Enable Single-App / Assigned Access  | Lock system to only one application.                            |
+| 2   | Disable Shortcut Keys & Hotkeys      | Block Alt+Tab, Ctrl+Esc, Win+R, Ctrl+Alt+Del.                   |
+| 3   | Block USB & External Drives          | Disable ports or enforce read-only to prevent malware/data theft. |
+| 4   | Network Segmentation / Firewall      | Allow only required internet/app traffic; block internal network. |
+| 5   | App / Browser Hardening              | Disable right-click, downloads, developer tools, file uploads.  |
+| 6   | Strong Admin Passwords / No Local Admin Accounts | Prevent exiting kiosk or modifying system settings. |
+| 7   | Auto Session Reset & Cache Clear     | Clear history, cookies, and user data on logout or idle timeout. |
+| 8   | Regular Patching & Updates           | Keep OS/app up to date to prevent exploit attacks.              |
 
 ### TASVS-REMOTE-3.1 - Verify that kiosk systems are configured to run only approved applications using assigned access or single-app mode.
 
