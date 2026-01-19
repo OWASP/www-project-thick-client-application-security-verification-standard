@@ -42,13 +42,11 @@ The project is looking for contributors to help with the following tasks:
   - might benefit from code examples and 
   - those that could be elaborated on further in simpler terms to make it more accessible to juniors in our field and developers with less security experience.
 
-## Special thanks to our contributers
+## Special thanks to our contributors
 
 The OWASP Thick Client Application Security Verification Standard (TASVS) Project would like to thank the following contributors for their support and dedication to the project:
 
-<a href="https://github.com/OWASP/www-project-thick-client-application-security-verification-standard/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=OWASP/www-project-thick-client-application-security-verification-standard" />
-</a>
+[![Contributors](https://contrib.rocks/image?repo=OWASP/www-project-thick-client-application-security-verification-standard)](https://github.com/OWASP/www-project-thick-client-application-security-verification-standard/graphs/contributors)
 
 ## Sponsors
 
