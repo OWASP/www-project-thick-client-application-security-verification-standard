@@ -14,6 +14,10 @@ The OWASP Thick Client Application Security Verification Standard (TASVS) Projec
 
 The TASVS Project fills the gap between the [OWASP Application Security Verification Standard (ASVS)](https://github.com/OWASP/ASVS) for web applications and the [Mobile Application Security Verification Standard (MASVS)](https://github.com/OWASP/owasp-masvs). While the MASVS can be applied to thick client testing, it is not an ideal fit. The TASVS Project seeks to create a more suitable standard for these scenarios.
 
+## How to get it
+
+The latest PDF version of the standard can be downloaded from the [Releases](https://github.com/OWASP/www-project-thick-client-application-security-verification-standard/releases/latest) page.
+
 ## Project Leaders and Working Group
 
 The project is mainly maintained by a single project leader [Dave Hanson](https://github.com/JeffreyShran). However he is heavily supported by his active AppSec team at Bentley Systems who include [Samuel Aubert](https://github.com/matreurai), [Einaras Bartkus](https://github.com/eb-bsi), [Thomas Chauchefoin](https://www.linkedin.com/in/thomaschauchefoin), and [John Cotter](https://www.linkedin.com/in/john-cotter-40338612/).
@@ -48,14 +52,12 @@ The OWASP Thick Client Application Security Verification Standard (TASVS) Projec
 
 ## Sponsors
 
-<a href="https://www.bentley.com/company/about-us/">
-  <div>
+<p>
+  <a href="https://www.bentley.com/company/about-us/">
     <img src="https://github.com/OWASP/www-project-thick-client-application-security-verification-standard/blob/main/assets/images/BentleyLOGO_BLK_type.jpg?raw=true" width="230" alt="Bentley Systems" />
-  </div>
-  <b>
-    Bentley is the leading provider of infrastructure engineering software, advancing infrastructure for better quality of life and sustainability.
-  </b>
-  <div>
-    <sup>Visit <u>bentley.com</u> to learn more.</sup>
-  </div>
-</a>
+  </a>
+</p>
+
+**Bentley is the leading provider of infrastructure engineering software, advancing infrastructure for better quality of life and sustainability.**
+
+Visit [bentley.com](https://www.bentley.com/company/about-us/) to learn more.
