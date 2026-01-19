@@ -20,22 +20,22 @@ The latest PDF version of the standard can be downloaded from the [Releases](htt
 
 ## Project Leaders and Working Group
 
-The project is mainly maintained by a single project leader [Dave Hanson](https://github.com/JeffreyShran). However he is heavily supported by his active AppSec team at Bentley Systems who include [Samuel Aubert](https://github.com/matreurai), [Einaras Bartkus](https://github.com/eb-bsi), [Thomas Chauchefoin](https://www.linkedin.com/in/thomaschauchefoin), and [John Cotter](https://www.linkedin.com/in/john-cotter-40338612/).
+The project is mainly maintained by a single project leader [Dave Hanson](https://github.com/JeffreyShran). However, he is heavily supported by his active AppSec team at Bentley Systems who include [Samuel Aubert](https://github.com/matreurai), [Einaras Bartkus](https://github.com/eb-bsi), [Thomas Chauchefoin](https://www.linkedin.com/in/thomaschauchefoin), and [John Cotter](https://www.linkedin.com/in/john-cotter-40338612/).
 
-The project is also supported by the OWASP community and the OWASP Foundation. Special, thanks to [Starr Brown](https://github.com/mamicidal) for her support in her capacity as Director of Projects.
+The project is also supported by the OWASP community and the OWASP Foundation. Special thanks to [Starr Brown](https://github.com/mamicidal) for her support in her capacity as Director of Projects.
 
 ## Roadmap
 
 The first public version that was suitable for use was released in September 2024. The project is in the process of refining the standard and adding more content.
 
-As we mature, we will be looking to create a more structured approach to the roadmap. As with most activities we will allow ourselves to be steered by the work completed by the [ASVS project](https://github.com/OWASP/ASVS/wiki/Roadmap-to-version-5.0) to find that strucutre.
+As we mature, we will be looking to create a more structured approach to the roadmap. As with most activities we will allow ourselves to be steered by the work completed by the [ASVS project](https://github.com/OWASP/ASVS/wiki/Roadmap-to-version-5.0) to find that structure.
 
 
 ## Contributing
 
 The project is looking for contributors to help with the following tasks:
 
-- Getting the word out about the project. If you do ntohing else, please share this project with your network.
+- Getting the word out about the project. If you do nothing else, please share this project with your network.
 - Review and provide feedback on the current standard.
 - Create new control objectives.
 - Update existing control group definitions, particularly those ones that:
@@ -44,9 +44,7 @@ The project is looking for contributors to help with the following tasks:
 
 ## Special thanks to our contributors
 
-The OWASP Thick Client Application Security Verification Standard (TASVS) Project would like to thank the following contributors for their support and dedication to the project:
-
-[![Contributors](https://contrib.rocks/image?repo=OWASP/www-project-thick-client-application-security-verification-standard)](https://github.com/OWASP/www-project-thick-client-application-security-verification-standard/graphs/contributors)
+The OWASP Thick Client Application Security Verification Standard (TASVS) Project would like to thank all of our [contributors](https://github.com/OWASP/www-project-thick-client-application-security-verification-standard/graphs/contributors) for their support and dedication to the project.
 
 ## Sponsors
 
