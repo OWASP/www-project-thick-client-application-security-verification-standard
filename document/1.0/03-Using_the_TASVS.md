@@ -19,6 +19,7 @@ The standard is divided into various groups labelled `TASVS-{word}` that represe
 - TASVS-NETWORK - Communication and privacy.
 - TASVS-STORAGE - Data storage considerations.
 - TASVS-FUTURE - Coming soon General considerations for future cloud adoption strategies.
+- TASVS-REMOTE - Remote Desktop, VDI & Kiosk Security.
 
 ### Sub Group
 
@@ -41,6 +42,10 @@ The standard is divided into various groups labelled `TASVS-{word}` that represe
 - TASVS-NETWORK-4 - Connected Services
 - TASVS-STORAGE-1 - Sensitive Information Review
 - TASVS-STORAGE-2 - DLL Hijacking
+- TASVS-REMOTE-1 – Remote Desktop (RDP) Security  
+- TASVS-REMOTE-2 – Virtual Desktop Infrastructure (VDI)  
+- TASVS-REMOTE-3 – Kiosk Mode Security  
+
 
 
 ## Application Security Verification Levels
